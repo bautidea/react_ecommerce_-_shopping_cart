@@ -7,18 +7,12 @@ const Products = ({ products }) => {
       <ul>
         {products.map((product) => (
           <li key={product.id}>
-            <div>
-              <h3>{product.title}</h3>
-            </div>
-
-            <div>
-              <p>{product.description}</p>
-              <p>$ {product.price}</p>
-            </div>
+            <h3>{product.title}</h3>
 
             <img src={product.thumbnail} alt={product.title} />
 
             <div>
+              <p>$ {product.price}</p>
               <button>{AddToCartIcon()}</button>
             </div>
           </li>
