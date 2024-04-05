@@ -17,6 +17,10 @@ const Products = ({ products }) => {
               <p>$ {product.price}</p>
               <button>{AddToCartIcon()}</button>
             </div>
+
+            <div className="prodDesc">
+              <p>{product.description}</p>
+            </div>
           </li>
         ))}
       </ul>
