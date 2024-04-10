@@ -6,10 +6,12 @@ const Filters = () => {
         <input type="range" id="price" min="0" max="2000" step="10" />
       </form>
 
-      {/* <form>
+      <form>
         <label htmlFor="category">Category</label>
-        <input type=""
-      </form> */}
+        <select id="category">
+          <option>All</option>
+        </select>
+      </form>
     </section>
   );
 };

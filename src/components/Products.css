@@ -78,7 +78,7 @@
 .products li:hover .prodDesc {
   opacity: 0.95;
   visibility: visible;
-  transition-delay: 0s; /* When hover ends transition ends as well */
+  transition-delay: 0s; /* When hover ends, transition ends as well */
 }
 
 .prodDesc p {
