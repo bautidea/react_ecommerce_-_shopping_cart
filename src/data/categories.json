@@ -1,0 +1,138 @@
+{
+  "brands": [
+    {
+      "id": 0,
+      "categoryName": "Apple"
+    },
+    {
+      "id": 1,
+      "categoryName": "Samsung"
+    },
+    {
+      "id": 2,
+      "categoryName": "OPPO"
+    },
+    {
+      "id": 3,
+      "categoryName": "Huawei"
+    },
+    {
+      "id": 4,
+      "categoryName": "Microsoft Surface"
+    },
+    {
+      "id": 5,
+      "categoryName": "Infinix"
+    },
+    {
+      "id": 6,
+      "categoryName": "HP Pavilion"
+    },
+    {
+      "id": 7,
+      "categoryName": "Impression of Acqua Di Gio"
+    },
+    {
+      "id": 8,
+      "categoryName": "Royal Mirage"
+    },
+    {
+      "id": 9,
+      "categoryName": "Fog Scent Xpressio"
+    },
+    {
+      "id": 10,
+      "categoryName": "Al Munakh"
+    },
+    {
+      "id": 11,
+      "categoryName": "Lord Al-Rehab"
+    },
+    {
+      "id": 12,
+      "categoryName": "L'Oreal"
+    },
+    {
+      "id": 13,
+      "categoryName": "Hemani Tea"
+    },
+    {
+      "id": 14,
+      "categoryName": "Dermive"
+    },
+    {
+      "id": 15,
+      "categoryName": "ROREC White Rice"
+    },
+    {
+      "id": 16,
+      "categoryName": "Fair & Clear"
+    },
+    {
+      "id": 17,
+      "categoryName": "Saaf & Khaas"
+    },
+    {
+      "id": 18,
+      "categoryName": "Bake Parlor Big"
+    },
+    {
+      "id": 19,
+      "categoryName": "Baking Food Items"
+    },
+    {
+      "id": 20,
+      "categoryName": "fauji"
+    },
+    {
+      "id": 21,
+      "categoryName": "Dry Rose"
+    },
+    {
+      "id": 22,
+      "categoryName": "Boho Decor"
+    },
+    {
+      "id": 23,
+      "categoryName": "Flying Wooden"
+    },
+    {
+      "id": 24,
+      "categoryName": "LED Lights"
+    },
+    {
+      "id": 25,
+      "categoryName": "luxury palace"
+    },
+    {
+      "id": 26,
+      "categoryName": "Golden"
+    }
+  ],
+  "categories": [
+    {
+      "id": 0,
+      "categoryName": "smartphones"
+    },
+    {
+      "id": 1,
+      "categoryName": "laptops"
+    },
+    {
+      "id": 2,
+      "categoryName": "fragrances"
+    },
+    {
+      "id": 3,
+      "categoryName": "skincare"
+    },
+    {
+      "id": 4,
+      "categoryName": "groceries"
+    },
+    {
+      "id": 5,
+      "categoryName": "home-decoration"
+    }
+  ]
+}

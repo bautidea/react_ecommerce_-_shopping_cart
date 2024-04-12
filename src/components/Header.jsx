@@ -1,10 +1,10 @@
 import Filters from './Filters';
 
-const Header = () => {
+const Header = ({ filters, handleFilterChange }) => {
   return (
     <header>
       <h1>React Shop</h1>
-      <Filters />
+      <Filters filters={filters} handleFilterChange={handleFilterChange} />
     </header>
   );
 };

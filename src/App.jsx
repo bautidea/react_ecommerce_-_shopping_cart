@@ -7,14 +7,21 @@ function App() {
   const [products, setProducts] = useState(productsRes);
   const [filters, setFilters] = useState({
     category: 'all',
+    brand: 'all',
     minPrice: 0,
   });
+
+  function handleFilterChange(filterToMod, value) {
+    console.log(filterToMod);
+    setFilters({ ...filters, [filterToMod]: value });
+  }
 
   function filterProducts(products) {
     return products.filter(
       (product) =>
         product.price >= filters.minPrice &&
-        (filters.category === 'all' || product.category === filters.category)
+        (filters.category === 'all' || product.category === filters.category) &&
+        (filters.brand === 'all' || product.brand === filters.brand)
     );
   }
 
@@ -22,7 +29,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header filters={filters} handleFilterChange={handleFilterChange} />
       <Products products={filteredProducts} />
     </>
   );
