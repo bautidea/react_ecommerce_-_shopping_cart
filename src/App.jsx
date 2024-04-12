@@ -12,7 +12,6 @@ function App() {
   });
 
   function handleFilterChange(filterToMod, value) {
-    console.log(filterToMod);
     setFilters({ ...filters, [filterToMod]: value });
   }
 
