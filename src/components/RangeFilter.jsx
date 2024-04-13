@@ -5,28 +5,40 @@ const RangeFilter = ({ maxValue, minValue, handlePriceChange }) => {
   const [currentValue, setCurrentValue] = useState(minValue);
 
   function handleChange(event) {
-    setCurrentValue(event.target.value);
-    handlePriceChange(currentValue);
+    const value = event.target.value;
+    setCurrentValue(value);
+    handlePriceChange(value);
   }
+
+  // Calculating the position of the slider, so i can pass it to the class
+  // current value.
+  const currentValuePosition =
+    ((minValue + currentValue) * 100) / (minValue + maxValue) + '%';
+
   return (
     <div className="priceRange">
       <label htmlFor="price" className="rangeLabel">
         Price
       </label>
 
-      <div className="slider">
+      <div className="sliderContainer">
         <p>${minValue}</p>
 
-        <p className="currentValue">{currentValue}</p>
-        <input
-          type="range"
-          id="price"
-          min={minValue}
-          max={maxValue}
-          step="10"
-          onChange={handleChange}
-          defaultValue={minValue}
-        />
+        <div className="slider">
+          <p className="currentValue" style={{ left: currentValuePosition }}>
+            {currentValue}
+          </p>
+
+          <input
+            type="range"
+            id="price"
+            min={minValue}
+            max={maxValue}
+            step="10"
+            onChange={handleChange}
+            defaultValue={minValue}
+          />
+        </div>
 
         <p>${maxValue}</p>
       </div>

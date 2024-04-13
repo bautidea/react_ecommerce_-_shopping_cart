@@ -1,5 +1,4 @@
 .priceRange {
-  position: relative;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -9,34 +8,41 @@
 
 .rangeLabel {
   font-size: 1.3rem;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   font-weight: bold;
 }
 
-.slider {
+.sliderContainer {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.currentValue {
+.slider {
   position: relative;
-  top: -30px;
-  left: ;
 }
+
+.currentValue {
+  position: absolute;
+  transform: translateX(-50%) translateY(-3rem);
+  background: #636363;
+  padding: 0.2rem 1rem;
+  border-radius: 20px;
+}
+
 .slider input {
   width: 25rem;
   height: 100%;
 }
-.slider p {
+.sliderContainer p {
   font-size: 1.3rem;
   margin: 0;
 }
 
-.slider p:last-child {
+.sliderContainer p:last-child {
   margin-left: 20px;
 }
 
-.slider p:first-child {
+.sliderContainer p:first-child {
   margin-right: 20px;
 }
