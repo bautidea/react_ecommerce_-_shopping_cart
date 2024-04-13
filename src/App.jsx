@@ -28,7 +28,11 @@ function App() {
 
   return (
     <>
-      <Header filters={filters} handleFilterChange={handleFilterChange} />
+      <Header
+        filters={filters}
+        handleFilterChange={handleFilterChange}
+        possibleFilters={filteredProducts}
+      />
       <Products products={filteredProducts} />
     </>
   );

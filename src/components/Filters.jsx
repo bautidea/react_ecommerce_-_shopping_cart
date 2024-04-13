@@ -3,7 +3,7 @@ import SelectFilter from './SelectFilter';
 import { brands, categories } from '../data/categories.json';
 import RangeFilter from './RangeFilter';
 
-const Filters = ({ filters, handleFilterChange }) => {
+const Filters = ({ filters, handleFilterChange, possibleFilters }) => {
   function handleBrandChange(event) {
     handleFilterChange('brand', event.target.value);
   }
@@ -16,6 +16,14 @@ const Filters = ({ filters, handleFilterChange }) => {
     handleFilterChange('minPrice', value);
   }
 
+  const usedBrandFilters = [
+    ...new Set(possibleFilters.map(({ brand }) => brand)),
+  ];
+  const usedCategoryFilters = [
+    ...new Set(possibleFilters.map(({ category }) => category)),
+  ];
+  console.log(usedBrandFilters);
+  console.log(usedCategoryFilters);
   return (
     <section className="filters">
       <RangeFilter
