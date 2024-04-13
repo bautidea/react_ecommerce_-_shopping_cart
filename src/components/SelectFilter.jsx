@@ -7,7 +7,7 @@ const SelectFilter = ({ categories, filterName, value, handleChange }) => {
 
   return (
     <label className="selectComponent">
-      {filterName}
+      <p className="selectLabel">{filterName}</p>
 
       <select value={value} onChange={handleChange}>
         <option value={'all'}>All</option>

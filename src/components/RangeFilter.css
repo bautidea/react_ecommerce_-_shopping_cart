@@ -1,0 +1,42 @@
+.priceRange {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.rangeLabel {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+.slider {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.currentValue {
+  position: relative;
+  top: -30px;
+  left: ;
+}
+.slider input {
+  width: 25rem;
+  height: 100%;
+}
+.slider p {
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.slider p:last-child {
+  margin-left: 20px;
+}
+
+.slider p:first-child {
+  margin-right: 20px;
+}

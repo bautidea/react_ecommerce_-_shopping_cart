@@ -1,6 +1,7 @@
 import './Filters.css';
 import SelectFilter from './SelectFilter';
 import { brands, categories } from '../data/categories.json';
+import RangeFilter from './RangeFilter';
 
 const Filters = ({ filters, handleFilterChange }) => {
   function handleBrandChange(event) {
@@ -11,23 +12,17 @@ const Filters = ({ filters, handleFilterChange }) => {
     handleFilterChange('category', event.target.value);
   }
 
-  function handlePriceChange(event) {
-    handleFilterChange('minPrice', event.target.value);
+  function handlePriceChange(value) {
+    handleFilterChange('minPrice', value);
   }
 
   return (
     <section className="filters">
-      <div className="priceRange">
-        <label htmlFor="price">Price</label>
-        <input
-          type="range"
-          id="price"
-          min="0"
-          max="2000"
-          step="10"
-          onChange={handlePriceChange}
-        />
-      </div>
+      <RangeFilter
+        minValue="0"
+        maxValue="2000"
+        handlePriceChange={handlePriceChange}
+      />
 
       <div className="selectComponents">
         <SelectFilter
