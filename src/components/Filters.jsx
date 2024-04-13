@@ -16,14 +16,20 @@ const Filters = ({ filters, handleFilterChange, possibleFilters }) => {
     handleFilterChange('minPrice', value);
   }
 
-  const usedBrandFilters = [
-    ...new Set(possibleFilters.map(({ brand }) => brand)),
-  ];
-  const usedCategoryFilters = [
-    ...new Set(possibleFilters.map(({ category }) => category)),
-  ];
-  console.log(usedBrandFilters);
-  console.log(usedCategoryFilters);
+  // Obtaining brands from filtered products, and removing duplicates.
+  // const usedBrandFilters = [
+  //   ...new Set(possibleFilters.map(({ brand }) => brand)),
+  // ];
+  // Obtaining categories from filtered products, and removing duplicates.
+  // const usedCategoryFilters = [
+  //   ...new Set(possibleFilters.map(({ category }) => category)),
+  // ];
+  // Obtaining all brands and its correspondent category.
+  const usedFilters = possibleFilters.map(({ brand, category }) => ({
+    brand,
+    category,
+  }));
+
   return (
     <section className="filters">
       <RangeFilter
@@ -38,12 +44,14 @@ const Filters = ({ filters, handleFilterChange, possibleFilters }) => {
           filterName={'Brand'}
           value={filters.brand}
           handleChange={handleBrandChange}
+          usedFilters={usedFilters}
         />
         <SelectFilter
           categories={categories}
           filterName={'Category'}
           value={filters.category}
           handleChange={handleCategoryChange}
+          usedFilters={usedFilters}
         />
       </div>
     </section>
