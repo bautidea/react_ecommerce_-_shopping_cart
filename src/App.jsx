@@ -1,15 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { products as productsRes } from './mocks/products.json';
 import Products from './components/Products';
 import Header from './components/Header';
 
 function App() {
-  const [products, setProducts] = useState(productsRes);
+  const [products, setProducts] = useState('');
   const [filters, setFilters] = useState({
     category: 'all',
     brand: 'all',
     minPrice: 0,
   });
+
+  useEffect(() => {
+    fetch('//dummyjson.com/test')
+      .then((res) => res.json())
+      .then(console.log);
+  }, []);
 
   function handleFilterChange(filterToMod, value) {
     setFilters({ ...filters, [filterToMod]: value });
