@@ -3,11 +3,17 @@
   flex-direction: column;
 }
 
+.rangeComponents {
+  width: 100%;
+  height: 100%;
+  margin-block: 1rem;
+}
+
 .selectComponents {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  margin-block: 2rem;
+  margin-block: 1rem;
 }

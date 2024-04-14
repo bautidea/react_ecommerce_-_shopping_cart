@@ -27,7 +27,7 @@
   background: #2e2e2e;
   padding: 0.5rem 2rem;
   border-radius: 10px;
-  border: 1px solid #cdcbcb;
+  border: wheat 1px solid;
   max-width: 200px;
   max-height: 300px;
 }
@@ -43,6 +43,7 @@
 
 .products button {
   width: 70%;
+  border: wheat 1px solid;
 }
 
 .prodDesc {

@@ -32,11 +32,13 @@ const Filters = ({ filters, handleFilterChange, possibleFilters }) => {
 
   return (
     <section className="filters">
-      <RangeFilter
-        minValue="0"
-        maxValue="2000"
-        handlePriceChange={handlePriceChange}
-      />
+      <div className="rangeComponents">
+        <RangeFilter
+          minValue="0"
+          maxValue="2000"
+          handlePriceChange={handlePriceChange}
+        />
+      </div>
 
       <div className="selectComponents">
         <SelectFilter

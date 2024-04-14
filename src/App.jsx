@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { products as productsRes } from './mocks/products.json';
+import fetchAllProducts from './services/fetchAllProducts';
 import Products from './components/Products';
 import Header from './components/Header';
 
 function App() {
-  const [products, setProducts] = useState('');
+  const [products, setProducts] = useState([]);
   const [filters, setFilters] = useState({
     category: 'all',
     brand: 'all',
@@ -12,9 +12,11 @@ function App() {
   });
 
   useEffect(() => {
-    fetch('//dummyjson.com/test')
-      .then((res) => res.json())
-      .then(console.log);
+    const fetchData = async () => {
+      const newProducts = await fetchAllProducts();
+      setProducts(newProducts);
+    };
+    fetchData();
   }, []);
 
   function handleFilterChange(filterToMod, value) {
