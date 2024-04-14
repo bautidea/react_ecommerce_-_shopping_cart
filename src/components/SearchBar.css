@@ -20,6 +20,7 @@
   width: 25rem;
   font-size: 1.3rem;
   padding: 0.8rem 1.3rem;
+  border: wheat 1px solid;
 }
 .searchBar button {
   font-size: 1.3rem;
