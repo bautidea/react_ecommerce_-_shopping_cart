@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import fetchAllProducts from './services/fetchAllProducts';
+import fetchSearchedProducts from './services/fetchSearchedProducts';
 import Products from './components/Products';
 import Header from './components/Header';
 
@@ -14,7 +15,8 @@ function App() {
 
   // Effect for fetching data.
   useEffect(() => {
-    if (searchProduct !== '') return;
+    // if the input has a char then this effect wont get executed.
+    if (searchProduct) return;
 
     const fetchData = async () => {
       const newProducts = await fetchAllProducts();
@@ -41,7 +43,12 @@ function App() {
   function handleSearchBarSubmit(event) {
     event.preventDefault();
 
-    console.log(searchProduct);
+    const fetchSearch = async () => {
+      const newProducts = await fetchSearchedProducts(searchProduct);
+      setProducts(newProducts);
+    };
+
+    fetchSearch();
   }
 
   function handleSearchInputChange(event) {
