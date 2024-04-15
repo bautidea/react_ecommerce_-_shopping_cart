@@ -1,19 +1,19 @@
 import './SearchBar.css';
 
-const SearchBar = () => {
+const SearchBar = ({ inputValue, handleChange, handleFormSubmit }) => {
   return (
-    <section className="searchBar">
-      <form>
-        <label>
-          <p>Search Product</p>
-          <input
-            type="text"
-            placeholder="Iphone, Smartwatch, Smartphone, Android, ..."
-          />
-        </label>
-        <button type="submit">Search</button>
-      </form>
-    </section>
+    <form onSubmit={handleFormSubmit} className="searchBar">
+      <label>
+        <p>Search Product</p>
+        <input
+          type="text"
+          value={inputValue}
+          placeholder="Iphone, Smartphone, ..."
+          onChange={handleChange}
+        />
+      </label>
+      <button type="submit">Search</button>
+    </form>
   );
 };
 

@@ -10,14 +10,18 @@ function App() {
     brand: 'all',
     minPrice: 0,
   });
+  const [searchProduct, setSearchProduct] = useState('');
 
+  // Effect for fetching data.
   useEffect(() => {
+    if (searchProduct !== '') return;
+
     const fetchData = async () => {
       const newProducts = await fetchAllProducts();
       setProducts(newProducts);
     };
     fetchData();
-  }, []);
+  }, [searchProduct]);
 
   function handleFilterChange(filterToMod, value) {
     setFilters({ ...filters, [filterToMod]: value });
@@ -34,12 +38,25 @@ function App() {
 
   const filteredProducts = filterProducts(products);
 
+  function handleSearchBarSubmit(event) {
+    event.preventDefault();
+
+    console.log(searchProduct);
+  }
+
+  function handleSearchInputChange(event) {
+    setSearchProduct(event.target.value);
+  }
+
   return (
     <>
       <Header
         filters={filters}
         handleFilterChange={handleFilterChange}
         possibleFilters={filteredProducts}
+        searchInputValue={searchProduct}
+        handleInputChange={handleSearchInputChange}
+        handleFormSubmit={handleSearchBarSubmit}
       />
       <Products products={filteredProducts} />
     </>
