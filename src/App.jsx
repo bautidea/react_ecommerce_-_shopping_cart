@@ -12,6 +12,7 @@ function App() {
     minPrice: 0,
   });
   const [searchProduct, setSearchProduct] = useState('');
+  const [isFilterActive, setIsFilterActive] = useState(true);
 
   // Effect for fetching data.
   useEffect(() => {
@@ -55,6 +56,10 @@ function App() {
     setSearchProduct(event.target.value);
   }
 
+  function showHideFilter() {
+    setIsFilterActive(!isFilterActive);
+  }
+
   return (
     <>
       <Header
@@ -64,6 +69,8 @@ function App() {
         searchInputValue={searchProduct}
         handleInputChange={handleSearchInputChange}
         handleFormSubmit={handleSearchBarSubmit}
+        isFilterActive={isFilterActive}
+        onFilterClick={showHideFilter}
       />
       <Products products={filteredProducts} />
     </>

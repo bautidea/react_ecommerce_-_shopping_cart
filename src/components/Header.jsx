@@ -1,5 +1,6 @@
 import Filters from './Filters';
 import SearchBar from './SearchBar';
+import FilterDiv from './FilterDiv';
 
 const Header = ({
   filters,
@@ -8,20 +9,28 @@ const Header = ({
   searchInputValue,
   handleInputChange,
   handleFormSubmit,
+  isFilterActive,
+  onFilterClick,
 }) => {
   return (
     <header>
       <h1>React Shop</h1>
+
       <SearchBar
         inputValue={searchInputValue}
         handleChange={handleInputChange}
         handleFormSubmit={handleFormSubmit}
       />
-      <Filters
-        filters={filters}
-        handleFilterChange={handleFilterChange}
-        possibleFilters={possibleFilters}
-      />
+
+      <FilterDiv onFilterClick={onFilterClick} />
+
+      {isFilterActive && (
+        <Filters
+          filters={filters}
+          handleFilterChange={handleFilterChange}
+          possibleFilters={possibleFilters}
+        />
+      )}
     </header>
   );
 };

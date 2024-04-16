@@ -1,12 +1,13 @@
 .filters {
   display: flex;
   flex-direction: column;
+  margin-block: 1rem;
 }
 
 .rangeComponents {
   width: 100%;
   height: 100%;
-  margin-block: 1rem;
+  margin-bottom: 1rem;
 }
 
 .selectComponents {
@@ -15,5 +16,5 @@
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  margin-block: 1rem;
+  margin-top: 1rem;
 }

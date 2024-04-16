@@ -1,0 +1,40 @@
+.filterDiv {
+  margin-block: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.divider {
+  height: 1px;
+  background: wheat;
+  width: 10rem;
+}
+
+.filterDiv p {
+  font-size: 1.3rem;
+  margin: 0.25rem 0;
+}
+
+.filterDiv img {
+  height: 25px;
+  width: auto;
+  transform: rotate(90deg);
+  transition: transform 0.3s;
+}
+
+.filterBtn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid wheat;
+  border-top: 1px solid wheat;
+  margin-inline: 1rem;
+  cursor: pointer;
+}
+
+.filterBtn:hover {
+  opacity: 0.5;
+}
