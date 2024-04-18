@@ -1,12 +1,14 @@
 import chevron from '../assets/chevron.svg';
 import './FilterDiv.css';
 
-const FilterDiv = () => {
+const FilterDiv = ({ isFilterActive, onFilterClick }) => {
+  const filterStatus = isFilterActive ? 'active' : 'inactive';
+
   return (
     <div className="filterDiv">
       <div className="divider" />
 
-      <div className="filterBtn">
+      <div className={`filterBtn ${filterStatus}`} onClick={onFilterClick}>
         <img src={chevron} />
         <p>Filters</p>
       </div>

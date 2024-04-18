@@ -1,8 +1,6 @@
 const productsSearchEndpoint = 'https://dummyjson.com/products/search?q=';
 
 async function fetchSearchedProducts(productToSearch) {
-  if (!productToSearch) return;
-
   const searchProductCall = productsSearchEndpoint + productToSearch;
 
   try {

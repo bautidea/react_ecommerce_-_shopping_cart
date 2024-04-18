@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   margin-block: 1rem;
+  transition: visibility 0s, opacity 0.5s linear;
 }
 
 .rangeComponents {
@@ -17,4 +18,17 @@
   justify-content: center;
   gap: 1.5rem;
   margin-top: 1rem;
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+  height: auto;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
 }

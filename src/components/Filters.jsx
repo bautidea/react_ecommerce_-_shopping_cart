@@ -3,7 +3,12 @@ import SelectFilter from './SelectFilter';
 import { brands, categories } from '../data/categories.json';
 import RangeFilter from './RangeFilter';
 
-const Filters = ({ filters, handleFilterChange, possibleFilters }) => {
+const Filters = ({
+  filters,
+  handleFilterChange,
+  possibleFilters,
+  isFilterActive,
+}) => {
   function handleBrandChange(event) {
     handleFilterChange('brand', event.target.value);
   }
@@ -30,8 +35,10 @@ const Filters = ({ filters, handleFilterChange, possibleFilters }) => {
     category,
   }));
 
+  const showFilters = isFilterActive ? 'visible' : 'hidden';
+
   return (
-    <section className="filters">
+    <section className={`filters ${showFilters}`}>
       <div className="rangeComponents">
         <RangeFilter
           minValue="0"

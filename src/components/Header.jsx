@@ -22,15 +22,17 @@ const Header = ({
         handleFormSubmit={handleFormSubmit}
       />
 
-      <FilterDiv onFilterClick={onFilterClick} />
+      <FilterDiv
+        isFilterActive={isFilterActive}
+        onFilterClick={onFilterClick}
+      />
 
-      {isFilterActive && (
-        <Filters
-          filters={filters}
-          handleFilterChange={handleFilterChange}
-          possibleFilters={possibleFilters}
-        />
-      )}
+      <Filters
+        filters={filters}
+        handleFilterChange={handleFilterChange}
+        possibleFilters={possibleFilters}
+        isFilterActive={isFilterActive}
+      />
     </header>
   );
 };

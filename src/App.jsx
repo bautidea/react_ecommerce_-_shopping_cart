@@ -12,7 +12,7 @@ function App() {
     minPrice: 0,
   });
   const [searchProduct, setSearchProduct] = useState('');
-  const [isFilterActive, setIsFilterActive] = useState(true);
+  const [isFilterActive, setIsFilterActive] = useState(false);
 
   // Effect for fetching data.
   useEffect(() => {
@@ -43,6 +43,8 @@ function App() {
 
   function handleSearchBarSubmit(event) {
     event.preventDefault();
+
+    if (!searchProduct) return console.log(searchProduct);
 
     const fetchSearch = async () => {
       const newProducts = await fetchSearchedProducts(searchProduct);
