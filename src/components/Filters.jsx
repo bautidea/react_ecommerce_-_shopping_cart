@@ -7,7 +7,9 @@ const Filters = ({
   filters,
   handleFilterChange,
   possibleFilters,
+  sliderValue,
   isFilterActive,
+  onClearFilterClick,
 }) => {
   function handleBrandChange(event) {
     handleFilterChange('brand', event.target.value);
@@ -21,14 +23,6 @@ const Filters = ({
     handleFilterChange('minPrice', value);
   }
 
-  // Obtaining brands from filtered products, and removing duplicates.
-  // const usedBrandFilters = [
-  //   ...new Set(possibleFilters.map(({ brand }) => brand)),
-  // ];
-  // Obtaining categories from filtered products, and removing duplicates.
-  // const usedCategoryFilters = [
-  //   ...new Set(possibleFilters.map(({ category }) => category)),
-  // ];
   // Obtaining all brands and its correspondent category.
   const usedFilters = possibleFilters.map(({ brand, category }) => ({
     brand,
@@ -42,6 +36,7 @@ const Filters = ({
       <div className="rangeComponents">
         <RangeFilter
           minValue="0"
+          value={sliderValue}
           maxValue="2000"
           handlePriceChange={handlePriceChange}
         />
@@ -55,6 +50,7 @@ const Filters = ({
           handleChange={handleBrandChange}
           usedFilters={usedFilters}
         />
+
         <SelectFilter
           categories={categories}
           filterName={'Category'}
@@ -63,6 +59,10 @@ const Filters = ({
           usedFilters={usedFilters}
         />
       </div>
+
+      <button type="button" onClick={onClearFilterClick}>
+        Clear Filter
+      </button>
     </section>
   );
 };

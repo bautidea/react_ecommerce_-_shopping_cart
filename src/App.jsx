@@ -54,6 +54,14 @@ function App() {
     fetchSearch();
   }
 
+  function clearFilter() {
+    setFilters({
+      category: 'all',
+      brand: 'all',
+      minPrice: 0,
+    });
+  }
+
   function handleSearchInputChange(event) {
     setSearchProduct(event.target.value);
   }
@@ -68,11 +76,13 @@ function App() {
         filters={filters}
         handleFilterChange={handleFilterChange}
         possibleFilters={filteredProducts}
+        sliderValue={filters.minPrice}
         searchInputValue={searchProduct}
         handleInputChange={handleSearchInputChange}
         handleFormSubmit={handleSearchBarSubmit}
         isFilterActive={isFilterActive}
         onFilterClick={showHideFilter}
+        clearFilter={clearFilter}
       />
       <Products products={filteredProducts} />
     </>

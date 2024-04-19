@@ -6,11 +6,13 @@ const Header = ({
   filters,
   handleFilterChange,
   possibleFilters,
+  sliderValue,
   searchInputValue,
   handleInputChange,
   handleFormSubmit,
   isFilterActive,
   onFilterClick,
+  clearFilter,
 }) => {
   return (
     <header>
@@ -31,7 +33,9 @@ const Header = ({
         filters={filters}
         handleFilterChange={handleFilterChange}
         possibleFilters={possibleFilters}
+        sliderValue={sliderValue}
         isFilterActive={isFilterActive}
+        onClearFilterClick={clearFilter}
       />
     </header>
   );
