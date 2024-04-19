@@ -1,31 +1,18 @@
-import { useState, useEffect } from 'react';
+import useSliderValues from '../hooks/useSliderValues';
 import './RangeFilter.css';
 
 const RangeFilter = ({ minValue, value, maxValue, handlePriceChange }) => {
-  const [currentValue, setCurrentValue] = useState(value);
-  const [currentValuePosition, setCurrentValuePosition] = useState(
-    ((minValue + currentValue) * 100) / (minValue + maxValue) + '%'
-  );
+  const { currentValue, currentValuePosition, updateValue } = useSliderValues({
+    value,
+    minValue,
+    maxValue,
+  });
 
   function handleChange(event) {
     const value = event.target.value;
-    setCurrentValue(value);
+    updateValue(value);
     handlePriceChange(value);
   }
-
-  // When value change when clicking the 'clear filter' button i need to
-  // set again the 'currentValue' value.
-  useEffect(() => {
-    setCurrentValue(value);
-  }, [value]);
-
-  // Calculating the position of the slider, so i can pass it to the class
-  // current value.
-  useEffect(() => {
-    setCurrentValuePosition(
-      ((minValue + currentValue) * 100) / (minValue + maxValue) + '%'
-    );
-  }, [currentValue, minValue, maxValue]);
 
   return (
     <div className="priceRange">

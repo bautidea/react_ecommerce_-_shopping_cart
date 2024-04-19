@@ -11,16 +11,16 @@ const Filters = ({
   isFilterActive,
   onClearFilterClick,
 }) => {
+  function handlePriceChange(value) {
+    handleFilterChange('minPrice', value);
+  }
+
   function handleBrandChange(event) {
     handleFilterChange('brand', event.target.value);
   }
 
   function handleCategoryChange(event) {
     handleFilterChange('category', event.target.value);
-  }
-
-  function handlePriceChange(value) {
-    handleFilterChange('minPrice', value);
   }
 
   // Obtaining all brands and its correspondent category.

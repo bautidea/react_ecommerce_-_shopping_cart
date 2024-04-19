@@ -1,69 +1,31 @@
-import { useEffect, useState } from 'react';
-import fetchAllProducts from './services/fetchAllProducts';
-import fetchSearchedProducts from './services/fetchSearchedProducts';
+import { useState } from 'react';
 import Products from './components/Products';
 import Header from './components/Header';
+import useProducts from './hooks/useProducts';
 
 function App() {
-  const [products, setProducts] = useState([]);
-  const [filters, setFilters] = useState({
-    category: 'all',
-    brand: 'all',
-    minPrice: 0,
-  });
-  const [searchProduct, setSearchProduct] = useState('');
+  const {
+    products,
+    searchProduct,
+    filters,
+    getSearchedProducts,
+    updateSearch,
+    updateFilters,
+    clearFilter,
+  } = useProducts();
+
   const [isFilterActive, setIsFilterActive] = useState(false);
-
-  // Effect for fetching data.
-  useEffect(() => {
-    // if the input has a char then this effect wont get executed.
-    if (searchProduct) return;
-
-    const fetchData = async () => {
-      const newProducts = await fetchAllProducts();
-      setProducts(newProducts);
-    };
-    fetchData();
-  }, [searchProduct]);
-
-  function handleFilterChange(filterToMod, value) {
-    setFilters({ ...filters, [filterToMod]: value });
-  }
-
-  function filterProducts(products) {
-    return products.filter(
-      (product) =>
-        product.price >= filters.minPrice &&
-        (filters.category === 'all' || product.category === filters.category) &&
-        (filters.brand === 'all' || product.brand === filters.brand)
-    );
-  }
-
-  const filteredProducts = filterProducts(products);
 
   function handleSearchBarSubmit(event) {
     event.preventDefault();
 
-    if (!searchProduct) return console.log(searchProduct);
+    if (!searchProduct) return;
 
-    const fetchSearch = async () => {
-      const newProducts = await fetchSearchedProducts(searchProduct);
-      setProducts(newProducts);
-    };
-
-    fetchSearch();
-  }
-
-  function clearFilter() {
-    setFilters({
-      category: 'all',
-      brand: 'all',
-      minPrice: 0,
-    });
+    getSearchedProducts(searchProduct);
   }
 
   function handleSearchInputChange(event) {
-    setSearchProduct(event.target.value);
+    updateSearch(event.target.value);
   }
 
   function showHideFilter() {
@@ -74,8 +36,8 @@ function App() {
     <>
       <Header
         filters={filters}
-        handleFilterChange={handleFilterChange}
-        possibleFilters={filteredProducts}
+        handleFilterChange={updateFilters}
+        possibleFilters={products}
         sliderValue={filters.minPrice}
         searchInputValue={searchProduct}
         handleInputChange={handleSearchInputChange}
@@ -84,7 +46,7 @@ function App() {
         onFilterClick={showHideFilter}
         clearFilter={clearFilter}
       />
-      <Products products={filteredProducts} />
+      <Products products={products} />
     </>
   );
 }
