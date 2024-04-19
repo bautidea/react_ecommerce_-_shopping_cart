@@ -10,6 +10,7 @@ function useProducts() {
     brand: 'all',
     minPrice: 0,
   });
+  const [isFilterActive, setIsFilterActive] = useState(false);
 
   function updateSearch(newSearchProduct) {
     setSearchProduct(newSearchProduct);
@@ -25,6 +26,10 @@ function useProducts() {
       brand: 'all',
       minPrice: 0,
     });
+  }
+
+  function updateFiltersVisibility() {
+    setIsFilterActive(!isFilterActive);
   }
 
   const filteredProducts = useMemo(() => {
@@ -58,10 +63,12 @@ function useProducts() {
     products: filteredProducts,
     searchProduct,
     filters,
+    isFilterActive,
     getSearchedProducts,
     updateSearch,
     updateFilters,
     clearFilter,
+    updateFiltersVisibility,
   };
 }
 

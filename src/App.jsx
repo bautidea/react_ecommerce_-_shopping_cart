@@ -8,13 +8,13 @@ function App() {
     products,
     searchProduct,
     filters,
+    isFilterActive,
     getSearchedProducts,
     updateSearch,
     updateFilters,
     clearFilter,
+    updateFiltersVisibility,
   } = useProducts();
-
-  const [isFilterActive, setIsFilterActive] = useState(false);
 
   function handleSearchBarSubmit(event) {
     event.preventDefault();
@@ -28,10 +28,6 @@ function App() {
     updateSearch(event.target.value);
   }
 
-  function showHideFilter() {
-    setIsFilterActive(!isFilterActive);
-  }
-
   return (
     <>
       <Header
@@ -43,7 +39,7 @@ function App() {
         handleInputChange={handleSearchInputChange}
         handleFormSubmit={handleSearchBarSubmit}
         isFilterActive={isFilterActive}
-        onFilterClick={showHideFilter}
+        onFilterClick={updateFiltersVisibility}
         clearFilter={clearFilter}
       />
       <Products products={products} />
