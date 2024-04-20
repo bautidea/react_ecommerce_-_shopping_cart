@@ -1,0 +1,42 @@
+.loadingBox {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+  padding: 0 15rem;
+}
+
+.loadingBox div {
+  background: rgb(28, 76, 91);
+  background: radial-gradient(
+    circle,
+    rgba(28, 76, 91, 1) 30%,
+    rgba(46, 46, 46, 1) 82%
+  );
+  width: 200px;
+  height: 250px;
+  border: 1px wheat solid;
+  border-radius: 10px;
+  animation: loading-animation 1s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+
+.loadingBox div:nth-child(1) {
+  animation-delay: -0.36s;
+}
+.loadingBox div:nth-child(2) {
+  animation-delay: -0.24s;
+}
+.loadingBox div:nth-child(3) {
+  animation-delay: -0.12s;
+}
+.loadingBox div:nth-child(4) {
+  animation-delay: 0;
+}
+
+@keyframes loading-animation {
+  0% {
+    transform: translateY(-50px);
+    height: 350px;
+  }
+}

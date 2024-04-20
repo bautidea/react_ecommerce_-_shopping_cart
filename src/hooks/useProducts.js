@@ -11,6 +11,8 @@ function useProducts() {
     minPrice: 0,
   });
   const [isFilterActive, setIsFilterActive] = useState(false);
+  const [isProductsLoading, setIsProductsLoading] = useState(false);
+  const [foundSearchedProducs, setFoundSearchedProducts] = useState(true);
 
   function updateSearch(newSearchProduct) {
     setSearchProduct(newSearchProduct);
@@ -42,13 +44,29 @@ function useProducts() {
   }, [products, filters]);
 
   const getProducts = useCallback(async () => {
-    const newProducts = await fetchAllProducts();
-    setProducts(newProducts);
+    try {
+      setIsProductsLoading(true);
+
+      const newProducts = await fetchAllProducts();
+      setProducts(newProducts);
+    } catch (e) {
+      console.log(e);
+    } finally {
+      setIsProductsLoading(false);
+    }
   }, []);
 
   const getSearchedProducts = useCallback(async (productToSearch) => {
-    const newProducts = await fetchSearchedProducts(productToSearch);
-    setProducts(newProducts);
+    try {
+      setIsProductsLoading(true);
+
+      const newProducts = await fetchSearchedProducts(productToSearch);
+      setProducts(newProducts);
+    } catch (e) {
+      console.log(e);
+    } finally {
+      setIsProductsLoading(false);
+    }
   }, []);
 
   // Effect for fetching data.
@@ -59,16 +77,28 @@ function useProducts() {
     getProducts();
   }, [searchProduct, getProducts]);
 
+  // Effect to see if the searched products had a match.
+  useEffect(() => {
+    // If there are no retrieved products.
+    if (products.length === 0) {
+      setFoundSearchedProducts(false);
+    } else {
+      setFoundSearchedProducts(true);
+    }
+  }, [products]);
+
   return {
     products: filteredProducts,
     searchProduct,
     filters,
     isFilterActive,
+    isProductsLoading,
     getSearchedProducts,
     updateSearch,
     updateFilters,
     clearFilter,
     updateFiltersVisibility,
+    foundSearchedProducs,
   };
 }
 

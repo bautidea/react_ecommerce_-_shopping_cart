@@ -1,29 +1,37 @@
 import './Products.css';
 import { AddToCartIcon } from './Icons.jsx';
+import Loading from './Loading.jsx';
 
-const Products = ({ products }) => {
+const Products = ({ products, isLoading, foundSearchedProducs }) => {
+  if (!foundSearchedProducs) {
+    return <h2> No Products were found </h2>;
+  }
   return (
     <main className="products">
-      <ul>
-        {products.map((product) => (
-          <li key={product.id}>
-            <div>
-              <h3>{product.title}</h3>
-            </div>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <ul>
+          {products.map((product) => (
+            <li key={product.id}>
+              <div>
+                <h3>{product.title}</h3>
+              </div>
 
-            <img src={product.thumbnail} alt={product.title} />
+              <img src={product.thumbnail} alt={product.title} />
 
-            <div>
-              <p>$ {product.price}</p>
-              <button>{AddToCartIcon()}</button>
-            </div>
+              <div>
+                <p>$ {product.price}</p>
+                <button>{AddToCartIcon()}</button>
+              </div>
 
-            <div className="prodDesc">
-              <p>{product.description}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
+              <div className="prodDesc">
+                <p>{product.description}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
     </main>
   );
 };

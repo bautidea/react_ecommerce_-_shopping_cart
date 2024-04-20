@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Products from './components/Products';
 import Header from './components/Header';
 import useProducts from './hooks/useProducts';
@@ -9,11 +8,13 @@ function App() {
     searchProduct,
     filters,
     isFilterActive,
+    isProductsLoading,
     getSearchedProducts,
     updateSearch,
     updateFilters,
     clearFilter,
     updateFiltersVisibility,
+    foundSearchedProducs,
   } = useProducts();
 
   function handleSearchBarSubmit(event) {
@@ -42,7 +43,11 @@ function App() {
         onFilterClick={updateFiltersVisibility}
         clearFilter={clearFilter}
       />
-      <Products products={products} />
+      <Products
+        products={products}
+        isLoading={isProductsLoading}
+        foundSearchedProducs={foundSearchedProducs}
+      />
     </>
   );
 }

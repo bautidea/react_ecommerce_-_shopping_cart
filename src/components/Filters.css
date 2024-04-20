@@ -4,6 +4,7 @@
   margin-block: 1rem;
   transition: visibility 0s, opacity 0.5s linear;
   align-items: center;
+  margin-bottom: 5rem;
 }
 
 .rangeComponents {
