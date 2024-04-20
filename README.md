@@ -9,6 +9,8 @@
 - Button to show or hide filters.
 - Button to clear filter.
 - Created custom hooks to separate and share logic between components.
+- Added loading skeletons when products are loading.
+- When no products are founded display a msg.
 
 ### 2. Shopping Cart:
 
