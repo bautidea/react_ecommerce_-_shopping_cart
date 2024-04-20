@@ -3,9 +3,10 @@ import { AddToCartIcon } from './Icons.jsx';
 import Loading from './Loading.jsx';
 
 const Products = ({ products, isLoading, foundSearchedProducs }) => {
-  if (!foundSearchedProducs) {
+  if (!foundSearchedProducs && !isLoading) {
     return <h2> No Products were found </h2>;
   }
+
   return (
     <main className="products">
       {isLoading ? (
