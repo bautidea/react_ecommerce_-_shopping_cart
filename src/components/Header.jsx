@@ -16,8 +16,6 @@ const Header = ({
 }) => {
   return (
     <header>
-      <h1>React Shop</h1>
-
       <SearchBar
         inputValue={searchInputValue}
         handleChange={handleInputChange}

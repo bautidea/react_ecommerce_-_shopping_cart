@@ -1,6 +1,9 @@
 import Products from './components/Products';
 import Header from './components/Header';
+import Nav from './components/Nav';
+import Cart from './components/Cart';
 import useProducts from './hooks/useProducts';
+import useCart from './hooks/useCart';
 
 function App() {
   const {
@@ -14,8 +17,10 @@ function App() {
     updateFilters,
     clearFilter,
     updateFiltersVisibility,
-    foundSearchedProducs,
+    foundSearchedProducts,
   } = useProducts();
+
+  const { isCartVisible, updateCartVisibility } = useCart();
 
   function handleSearchBarSubmit(event) {
     event.preventDefault();
@@ -31,6 +36,8 @@ function App() {
 
   return (
     <>
+      <Nav handleCartBtnClick={updateCartVisibility} />
+
       <Header
         filters={filters}
         handleFilterChange={updateFilters}
@@ -43,10 +50,13 @@ function App() {
         onFilterClick={updateFiltersVisibility}
         clearFilter={clearFilter}
       />
+
+      <Cart isCartVisible={isCartVisible} />
+
       <Products
         products={products}
         isLoading={isProductsLoading}
-        foundSearchedProducs={foundSearchedProducs}
+        foundSearchedProducts={foundSearchedProducts}
       />
     </>
   );

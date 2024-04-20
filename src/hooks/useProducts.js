@@ -12,7 +12,7 @@ function useProducts() {
   });
   const [isFilterActive, setIsFilterActive] = useState(false);
   const [isProductsLoading, setIsProductsLoading] = useState(false);
-  const [foundSearchedProducs, setFoundSearchedProducts] = useState(true);
+  const [foundSearchedProducts, setFoundSearchedProducts] = useState(true);
 
   function updateSearch(newSearchProduct) {
     setSearchProduct(newSearchProduct);
@@ -98,7 +98,7 @@ function useProducts() {
     updateFilters,
     clearFilter,
     updateFiltersVisibility,
-    foundSearchedProducs,
+    foundSearchedProducts,
   };
 }
 

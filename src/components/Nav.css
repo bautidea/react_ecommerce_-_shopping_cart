@@ -1,0 +1,22 @@
+.cartNavBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1rem 15rem;
+  padding: 0.5rem 0;
+  border-top: 1px solid wheat;
+  border-bottom: 1px solid wheat;
+}
+
+.cartBtn {
+  font-size: 1.3rem;
+  width: 75px;
+  border: wheat 1px solid;
+  border-radius: 20px;
+  padding: 0.25rem 1rem;
+}
+
+.cartBtn img {
+  height: 30px;
+  width: auto;
+}

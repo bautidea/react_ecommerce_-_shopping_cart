@@ -2,8 +2,8 @@ import './Products.css';
 import { AddToCartIcon } from './Icons.jsx';
 import Loading from './Loading.jsx';
 
-const Products = ({ products, isLoading, foundSearchedProducs }) => {
-  if (!foundSearchedProducs && !isLoading) {
+const Products = ({ products, isLoading, foundSearchedProducts }) => {
+  if (!foundSearchedProducts && !isLoading) {
     return <h2> No Products were found </h2>;
   }
 
