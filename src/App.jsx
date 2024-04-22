@@ -4,21 +4,26 @@ import Nav from './components/Nav';
 import Cart from './components/Cart';
 import useProducts from './hooks/useProducts';
 import useCart from './hooks/useCart';
+import useFilter from './hooks/useFilter';
 
 function App() {
   const {
     products,
     searchProduct,
-    filters,
-    isFilterActive,
     isProductsLoading,
     getSearchedProducts,
     updateSearch,
+    foundSearchedProducts,
+  } = useProducts();
+
+  const {
+    filteredProducts,
+    filters,
+    isFilterActive,
     updateFilters,
     clearFilter,
     updateFiltersVisibility,
-    foundSearchedProducts,
-  } = useProducts();
+  } = useFilter({ products });
 
   const { isCartVisible, updateCartVisibility } = useCart();
 
@@ -41,7 +46,7 @@ function App() {
       <Header
         filters={filters}
         handleFilterChange={updateFilters}
-        possibleFilters={products}
+        possibleFilters={filteredProducts}
         sliderValue={filters.minPrice}
         searchInputValue={searchProduct}
         handleInputChange={handleSearchInputChange}
@@ -54,7 +59,7 @@ function App() {
       <Cart isCartVisible={isCartVisible} />
 
       <Products
-        products={products}
+        products={filteredProducts}
         isLoading={isProductsLoading}
         foundSearchedProducts={foundSearchedProducts}
       />
