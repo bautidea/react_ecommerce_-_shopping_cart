@@ -6,6 +6,7 @@ const SelectFilter = ({
   value,
   handleChange,
   usedFilters,
+  filterId,
 }) => {
   const sortedCategories = categories.sort((a, b) =>
     a.categoryName.localeCompare(b.categoryName)
@@ -17,18 +18,16 @@ const SelectFilter = ({
       if (category === catToFilter) return brand;
     });
 
-    const isCategoryPresent = usedCategories.every(
-      (value) => value === undefined
-    );
-
-    return isCategoryPresent;
+    return usedCategories.every((value) => value === undefined);
   }
 
   return (
-    <label className="selectComponent">
-      <p className="selectLabel">{filterName}</p>
+    <div className="selectComponent">
+      <label htmlFor={filterId}>
+        <p className="selectLabel">{filterName}</p>
+      </label>
 
-      <select value={value} onChange={handleChange}>
+      <select value={value} onChange={handleChange} id={filterId}>
         <option value={'all'}>All</option>
 
         {sortedCategories.map((cat) => {
@@ -45,7 +44,7 @@ const SelectFilter = ({
           );
         })}
       </select>
-    </label>
+    </div>
   );
 };
 

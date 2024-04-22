@@ -1,6 +1,7 @@
 import './Filters.css';
-import SelectFilter from './SelectFilter';
+import { useId } from 'react';
 import { brands, categories } from '../data/categories.json';
+import SelectFilter from './SelectFilter';
 import RangeFilter from './RangeFilter';
 
 const Filters = ({
@@ -11,6 +12,10 @@ const Filters = ({
   isFilterActive,
   onClearFilterClick,
 }) => {
+  const priceSliderId = useId();
+  const brandSelectId = useId();
+  const categorySelectId = useId();
+
   function handlePriceChange(value) {
     handleFilterChange('minPrice', value);
   }
@@ -39,6 +44,7 @@ const Filters = ({
           value={sliderValue}
           maxValue="2000"
           handlePriceChange={handlePriceChange}
+          filterId={priceSliderId}
         />
       </div>
 
@@ -49,6 +55,7 @@ const Filters = ({
           value={filters.brand}
           handleChange={handleBrandChange}
           usedFilters={usedFilters}
+          filterId={brandSelectId}
         />
 
         <SelectFilter
@@ -57,6 +64,7 @@ const Filters = ({
           value={filters.category}
           handleChange={handleCategoryChange}
           usedFilters={usedFilters}
+          filterId={categorySelectId}
         />
       </div>
 

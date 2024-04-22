@@ -1,7 +1,13 @@
 import useSliderValues from '../hooks/useSliderValues';
 import './RangeFilter.css';
 
-const RangeFilter = ({ minValue, value, maxValue, handlePriceChange }) => {
+const RangeFilter = ({
+  minValue,
+  value,
+  maxValue,
+  handlePriceChange,
+  filterId,
+}) => {
   const { currentValue, currentValuePosition, updateValue } = useSliderValues({
     value,
     minValue,
@@ -16,7 +22,7 @@ const RangeFilter = ({ minValue, value, maxValue, handlePriceChange }) => {
 
   return (
     <div className="priceRange">
-      <label htmlFor="price" className="rangeLabel">
+      <label htmlFor={filterId} className="rangeLabel">
         Price
       </label>
 
@@ -30,7 +36,7 @@ const RangeFilter = ({ minValue, value, maxValue, handlePriceChange }) => {
 
           <input
             type="range"
-            id="price"
+            id={filterId}
             min={minValue}
             max={maxValue}
             step="10"
