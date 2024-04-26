@@ -25,7 +25,13 @@ function App() {
     updateFiltersVisibility,
   } = useFilter({ products });
 
-  const { isCartVisible, updateCartVisibility } = useCart();
+  const {
+    cartItems,
+    addToCart,
+    clearCart,
+    isCartVisible,
+    updateCartVisibility,
+  } = useCart();
 
   function handleSearchBarSubmit(event) {
     event.preventDefault();
@@ -62,6 +68,7 @@ function App() {
         products={filteredProducts}
         isLoading={isProductsLoading}
         foundSearchedProducts={foundSearchedProducts}
+        handleAddToCart={addToCart}
       />
     </>
   );

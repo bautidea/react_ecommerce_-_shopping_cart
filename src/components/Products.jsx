@@ -2,7 +2,12 @@ import './Products.css';
 import { AddToCartIcon } from './Icons.jsx';
 import Loading from './Loading.jsx';
 
-const Products = ({ products, isLoading, foundSearchedProducts }) => {
+const Products = ({
+  products,
+  isLoading,
+  foundSearchedProducts,
+  handleAddToCart,
+}) => {
   if (!foundSearchedProducts && !isLoading) {
     return <h2> No Products were found </h2>;
   }
@@ -23,7 +28,9 @@ const Products = ({ products, isLoading, foundSearchedProducts }) => {
 
               <div>
                 <p>$ {product.price}</p>
-                <button>{AddToCartIcon()}</button>
+                <button onClick={() => handleAddToCart(product)}>
+                  {AddToCartIcon()}
+                </button>
               </div>
 
               <div className="prodDesc">
