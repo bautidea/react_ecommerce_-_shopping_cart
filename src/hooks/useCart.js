@@ -5,8 +5,12 @@ const useCart = () => {
   const [isCartVisible, setIsCartVisible] = useState(false);
 
   function addToCart(product) {
-    setCartItems([...cartItems, { ...product, quantity: 1 }]);
-    console.log(cartItems);
+    // Finding index of the product in the cart.
+    const productInIndex = cartItems.findIndex(
+      (cartProduct) => cartProduct.id === product.id
+    );
+
+    if (productInIndex) console.log(cartItems);
   }
 
   function clearCart() {
