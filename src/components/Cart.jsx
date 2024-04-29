@@ -1,12 +1,18 @@
 import './Cart.css';
 
-const Cart = ({ isCartVisible }) => {
+const Cart = ({ cartItems, isCartVisible }) => {
   return (
     <>
       {isCartVisible && (
-        <aside className="cartSection">
-          <div className="cartDisplay"></div>
-        </aside>
+        <div className="cartSection">
+          <aside className="cartDisplay">
+            <ul>
+              {cartItems.map((cartProduct) => (
+                <li key={cartProduct.id}></li>
+              ))}
+            </ul>
+          </aside>
+        </div>
       )}
     </>
   );
