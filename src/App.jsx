@@ -62,7 +62,12 @@ function App() {
         clearFilter={clearFilter}
       />
 
-      <Cart cartItems={cartItems} isCartVisible={isCartVisible} />
+      <Cart
+        cartItems={cartItems}
+        addToCart={addToCart}
+        clearCart={clearCart}
+        isCartVisible={isCartVisible}
+      />
 
       <Products
         products={filteredProducts}

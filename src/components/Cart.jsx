@@ -1,12 +1,12 @@
 import './Cart.css';
 
-const Cart = ({ cartItems, isCartVisible }) => {
+const Cart = ({ cartItems, addToCart, clearCart, isCartVisible }) => {
   return (
     <>
       {isCartVisible && (
         <div className="cartSection">
           <aside className="cartDisplay">
-            <ul>
+            <ul className="cartList">
               {cartItems.map((cartProduct) => (
                 <li key={cartProduct.id} className="cartProduct">
                   <div className="cartProductDesc">
@@ -27,7 +27,7 @@ const Cart = ({ cartItems, isCartVisible }) => {
 
                       <p className="productQuantity">{cartProduct.quantity}</p>
 
-                      <button>+</button>
+                      <button onClick={() => addToCart(cartProduct)}>+</button>
                     </div>
 
                     <p className="productPrice">
@@ -37,6 +37,10 @@ const Cart = ({ cartItems, isCartVisible }) => {
                 </li>
               ))}
             </ul>
+
+            <div>
+              <p className="clearCartButton">Clear Cart</p>
+            </div>
           </aside>
         </div>
       )}
