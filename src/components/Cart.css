@@ -21,3 +21,63 @@
   height: 100%;
   margin-right: 15rem;
 }
+
+.cartProduct {
+  margin: 0 10px 40px;
+  border-bottom: 1px solid gray;
+  padding-bottom: 1rem;
+}
+
+.cartProductDesc {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.cartProductDesc img {
+  height: auto;
+  width: 10rem;
+  margin-right: 10px;
+}
+
+.cartProductDesc h3,
+.cartProductDesc p {
+  margin: 0;
+  text-align: left;
+}
+
+.cartProductDesc p {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.productCheckOutInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.quantityDisplay {
+  border: 1px solid wheat;
+  border-radius: 5px;
+  display: flex;
+  width: 10rem;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.quantityDisplay button {
+  width: 50px;
+  height: 50px;
+}
+
+.productQuantity {
+  margin: 0;
+}
+
+.productPrice {
+  font-size: 1.5rem;
+  margin-right: 25px;
+}
