@@ -44,14 +44,30 @@
   margin-right: 10px;
 }
 
-.cartProductDesc h3,
-.cartProductDesc p {
-  margin: 0;
-  text-align: left;
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: flex-start;
 }
 
-.cartProductDesc p {
-  color: rgba(255, 255, 255, 0.7);
+.productTitle,
+.productBrand,
+.cartUtilityButton {
+  margin: 0;
+}
+
+.productBrand {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.cartUtilityButton {
+  color: rgb(0, 140, 255);
+  text-decoration: underline;
+}
+
+.cartUtilityButton:hover {
+  cursor: pointer;
 }
 
 .productCheckOutInfo {
@@ -93,16 +109,6 @@
   align-items: flex-start;
   justify-content: start;
   margin: 0 10px;
-}
-
-.clearCartButton {
-  color: rgb(0, 140, 255);
-  text-decoration: underline;
-  margin: 0;
-}
-
-.clearCartButton:hover {
-  cursor: pointer;
 }
 
 .cartTotal {

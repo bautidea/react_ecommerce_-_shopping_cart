@@ -21,9 +21,10 @@ const Cart = ({ cartItems, addToCart, clearCart, isCartVisible }) => {
                       alt={`${cartProduct.brand} ${cartProduct.category}`}
                     />
 
-                    <div>
-                      <h3>{cartProduct.title}</h3>
-                      <p>Brand: {cartProduct.brand}</p>
+                    <div className="productInfo">
+                      <h3 className="productTitle">{cartProduct.title}</h3>
+                      <p className="productBrand">Brand: {cartProduct.brand}</p>
+                      <p className="cartUtilityButton">Remove</p>
                     </div>
                   </div>
 
@@ -46,7 +47,7 @@ const Cart = ({ cartItems, addToCart, clearCart, isCartVisible }) => {
 
             {cartHasItems && (
               <div className="cartUtility">
-                <p className="clearCartButton" onClick={clearCart}>
+                <p className="cartUtilityButton" onClick={clearCart}>
                   Clear Cart
                 </p>
 
