@@ -1,6 +1,12 @@
 import './Cart.css';
 
 const Cart = ({ cartItems, addToCart, clearCart, isCartVisible }) => {
+  const cartHasItems = cartItems.length > 0;
+
+  var cartTotal = cartItems.reduce((prevValue, currValue) => {
+    return prevValue + currValue.quantity * currValue.price;
+  }, 0);
+
   return (
     <>
       {isCartVisible && (
@@ -25,22 +31,31 @@ const Cart = ({ cartItems, addToCart, clearCart, isCartVisible }) => {
                     <div className="quantityDisplay">
                       <button>-</button>
 
-                      <p className="productQuantity">{cartProduct.quantity}</p>
+                      <p>{cartProduct.quantity}</p>
 
                       <button onClick={() => addToCart(cartProduct)}>+</button>
                     </div>
 
                     <p className="productPrice">
-                      $ {cartProduct.quantity * cartProduct.price}{' '}
+                      $ {cartProduct.quantity * cartProduct.price}
                     </p>
                   </div>
                 </li>
               ))}
             </ul>
 
-            <div>
-              <p className="clearCartButton">Clear Cart</p>
-            </div>
+            {cartHasItems && (
+              <div className="cartUtility">
+                <p className="clearCartButton" onClick={clearCart}>
+                  Clear Cart
+                </p>
+
+                <div className="productCheckOutInfo">
+                  <p className="productPrice">Total</p>
+                  <p className="productPrice">$ {cartTotal}</p>
+                </div>
+              </div>
+            )}
           </aside>
         </div>
       )}
