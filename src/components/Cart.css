@@ -92,12 +92,17 @@
 .quantityDisplay button {
   width: 50px;
   height: 50px;
+  padding: 0;
 }
 
 .productCheckOutInfo p {
   margin: 0;
 }
 
+.binButton {
+  width: 20px;
+  height: auto;
+}
 .productPrice {
   font-size: 1.5rem;
 }

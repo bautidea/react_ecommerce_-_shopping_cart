@@ -28,6 +28,8 @@ function App() {
   const {
     cartItems,
     addToCart,
+    decreaseQuantity,
+    removeFromCart,
     clearCart,
     isCartVisible,
     updateCartVisibility,
@@ -65,6 +67,8 @@ function App() {
       <Cart
         cartItems={cartItems}
         addToCart={addToCart}
+        decreaseQuantity={decreaseQuantity}
+        removeFromCart={removeFromCart}
         clearCart={clearCart}
         isCartVisible={isCartVisible}
       />

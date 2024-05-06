@@ -1,11 +1,21 @@
 import './Cart.css';
+import bin from '../assets/bin.png';
 
-const Cart = ({ cartItems, addToCart, clearCart, isCartVisible }) => {
+const Cart = ({
+  cartItems,
+  addToCart,
+  decreaseQuantity,
+  removeFromCart,
+  clearCart,
+  isCartVisible,
+}) => {
   const cartHasItems = cartItems.length > 0;
 
-  var cartTotal = cartItems.reduce((prevValue, currValue) => {
-    return prevValue + currValue.quantity * currValue.price;
-  }, 0);
+  function obtainTotal() {
+    return cartItems.reduce((total, cartProduct) => {
+      return total + cartProduct.quantity * cartProduct.price;
+    }, 0);
+  }
 
   return (
     <>
@@ -24,13 +34,24 @@ const Cart = ({ cartItems, addToCart, clearCart, isCartVisible }) => {
                     <div className="productInfo">
                       <h3 className="productTitle">{cartProduct.title}</h3>
                       <p className="productBrand">Brand: {cartProduct.brand}</p>
-                      <p className="cartUtilityButton">Remove</p>
+                      <p
+                        className="cartUtilityButton"
+                        onClick={() => removeFromCart(cartProduct.id)}
+                      >
+                        Remove
+                      </p>
                     </div>
                   </div>
 
                   <div className="productCheckOutInfo">
                     <div className="quantityDisplay">
-                      <button>-</button>
+                      <button onClick={() => decreaseQuantity(cartProduct)}>
+                        {cartProduct.quantity === 1 ? (
+                          <img className="binButton" src={bin} />
+                        ) : (
+                          '-'
+                        )}
+                      </button>
 
                       <p>{cartProduct.quantity}</p>
 
@@ -53,7 +74,7 @@ const Cart = ({ cartItems, addToCart, clearCart, isCartVisible }) => {
 
                 <div className="productCheckOutInfo">
                   <p className="productPrice">Total</p>
-                  <p className="productPrice">$ {cartTotal}</p>
+                  <p className="productPrice">$ {obtainTotal()}</p>
                 </div>
               </div>
             )}

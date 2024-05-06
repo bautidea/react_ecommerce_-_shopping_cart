@@ -19,7 +19,29 @@ const useCart = () => {
       newCart[productInIndex].quantity += 1;
       setCartItems(newCart);
     }
-    console.log(cartItems);
+  }
+
+  function removeFromCart(productId) {
+    const newCart = cartItems.filter(
+      (cartProduct) => cartProduct.id !== productId
+    );
+
+    setCartItems(newCart);
+  }
+
+  function decreaseQuantity(product) {
+    if (product.quantity === 1) {
+      removeFromCart(product.id);
+    } else {
+      const newCart = cartItems.map((cartProduct) => {
+        if (cartProduct.id === product.id) {
+          return { ...cartProduct, quantity: cartProduct.quantity - 1 };
+        } else {
+          return { ...cartProduct };
+        }
+      });
+      setCartItems(newCart);
+    }
   }
 
   function clearCart() {
@@ -33,6 +55,8 @@ const useCart = () => {
   return {
     cartItems,
     addToCart,
+    decreaseQuantity,
+    removeFromCart,
     clearCart,
     isCartVisible,
     updateCartVisibility,
