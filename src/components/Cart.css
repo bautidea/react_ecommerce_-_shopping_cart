@@ -97,13 +97,19 @@
 
 .productCheckOutInfo input {
   width: 50px;
-  height: 40px;
+  /* height: 40px; */
   margin: 0;
-  padding: 0;
+  padding: 10px 5px;
   text-align: center;
   border: none;
   font-size: 20px;
   background: transparent;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .binButton {
