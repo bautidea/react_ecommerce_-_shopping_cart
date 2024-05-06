@@ -95,8 +95,15 @@
   padding: 0;
 }
 
-.productCheckOutInfo p {
+.productCheckOutInfo input {
+  width: 50px;
+  height: 40px;
   margin: 0;
+  padding: 0;
+  text-align: center;
+  border: none;
+  font-size: 20px;
+  background: transparent;
 }
 
 .binButton {

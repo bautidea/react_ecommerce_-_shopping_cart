@@ -5,6 +5,7 @@ const Cart = ({
   cartItems,
   addToCart,
   decreaseQuantity,
+  updateInputProductQuantity,
   removeFromCart,
   clearCart,
   isCartVisible,
@@ -17,6 +18,14 @@ const Cart = ({
     }, 0);
   }
 
+  function validateInput(productId, event) {
+    const newValue = Number(event.target.value);
+    if (newValue <= 0) {
+      updateInputProductQuantity(productId, 1);
+    } else {
+      updateInputProductQuantity(productId, newValue);
+    }
+  }
   return (
     <>
       {isCartVisible && (
@@ -46,14 +55,18 @@ const Cart = ({
                   <div className="productCheckOutInfo">
                     <div className="quantityDisplay">
                       <button onClick={() => decreaseQuantity(cartProduct)}>
-                        {cartProduct.quantity === 1 ? (
+                        {cartProduct.quantity <= 1 ? (
                           <img className="binButton" src={bin} />
                         ) : (
                           '-'
                         )}
                       </button>
 
-                      <p>{cartProduct.quantity}</p>
+                      <input
+                        value={cartProduct.quantity}
+                        onChange={(e) => validateInput(cartProduct.id, e)}
+                        type="number"
+                      />
 
                       <button onClick={() => addToCart(cartProduct)}>+</button>
                     </div>

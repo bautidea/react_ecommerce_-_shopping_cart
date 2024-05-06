@@ -15,10 +15,28 @@ const useCart = () => {
     if (productInIndex === -1) {
       setCartItems((prevState) => [...prevState, { ...product, quantity: 1 }]);
     } else {
-      const newCart = structuredClone(cartItems);
-      newCart[productInIndex].quantity += 1;
+      const newCart = cartItems.map((cartProduct) => {
+        if (cartProduct.id === product.id) {
+          return { ...cartProduct, quantity: cartProduct.quantity + 1 };
+        } else {
+          return { ...cartProduct };
+        }
+      });
+
       setCartItems(newCart);
     }
+  }
+
+  function updateInputProductQuantity(productId, inputQuantity) {
+    const newCart = cartItems.map((cartProduct) => {
+      if (cartProduct.id === productId) {
+        return { ...cartProduct, quantity: inputQuantity };
+      } else {
+        return { ...cartProduct };
+      }
+    });
+
+    setCartItems(newCart);
   }
 
   function removeFromCart(productId) {
@@ -56,6 +74,7 @@ const useCart = () => {
     cartItems,
     addToCart,
     decreaseQuantity,
+    updateInputProductQuantity,
     removeFromCart,
     clearCart,
     isCartVisible,

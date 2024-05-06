@@ -29,6 +29,7 @@ function App() {
     cartItems,
     addToCart,
     decreaseQuantity,
+    updateInputProductQuantity,
     removeFromCart,
     clearCart,
     isCartVisible,
@@ -68,6 +69,7 @@ function App() {
         cartItems={cartItems}
         addToCart={addToCart}
         decreaseQuantity={decreaseQuantity}
+        updateInputProductQuantity={updateInputProductQuantity}
         removeFromCart={removeFromCart}
         clearCart={clearCart}
         isCartVisible={isCartVisible}
