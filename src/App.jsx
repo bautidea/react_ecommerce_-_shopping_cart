@@ -11,9 +11,9 @@ function App() {
     products,
     searchProduct,
     isProductsLoading,
-    getSearchedProducts,
     updateSearch,
     foundSearchedProducts,
+    handleSearchBarSubmit,
   } = useProducts();
 
   const {
@@ -37,18 +37,6 @@ function App() {
     closeCart,
   } = useCart();
 
-  function handleSearchBarSubmit(event) {
-    event.preventDefault();
-
-    if (!searchProduct) return;
-
-    getSearchedProducts(searchProduct);
-  }
-
-  function handleSearchInputChange(event) {
-    updateSearch(event.target.value);
-  }
-
   return (
     <>
       <Nav isCartVisible={isCartVisible} showCart={showCart} />
@@ -59,7 +47,7 @@ function App() {
         possibleFilters={filteredProducts}
         sliderValue={filters.minPrice}
         searchInputValue={searchProduct}
-        handleInputChange={handleSearchInputChange}
+        handleInputChange={updateSearch}
         handleFormSubmit={handleSearchBarSubmit}
         isFilterActive={isFilterActive}
         onFilterClick={updateFiltersVisibility}

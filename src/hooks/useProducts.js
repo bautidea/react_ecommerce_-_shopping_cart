@@ -39,6 +39,14 @@ function useProducts() {
     }
   }, []);
 
+  function handleSearchBarSubmit(event) {
+    event.preventDefault();
+
+    if (!searchProduct) return;
+
+    getSearchedProducts(searchProduct);
+  }
+
   // Effect for fetching data.
   useEffect(() => {
     // if the input has a char then this effect wont get executed.
@@ -61,9 +69,9 @@ function useProducts() {
     products,
     searchProduct,
     isProductsLoading,
-    getSearchedProducts,
     updateSearch,
     foundSearchedProducts,
+    handleSearchBarSubmit,
   };
 }
 

@@ -9,7 +9,7 @@ const SearchBar = ({ inputValue, handleChange, handleFormSubmit }) => {
           type="text"
           value={inputValue}
           placeholder="Iphone, Smartphone, ..."
-          onChange={handleChange}
+          onChange={(e) => handleChange(e.target.value)}
         />
       </label>
       <button type="submit">Search</button>
