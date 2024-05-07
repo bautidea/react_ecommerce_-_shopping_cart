@@ -1,5 +1,7 @@
 import './Cart.css';
 import bin from '../assets/bin.png';
+import close from '../assets/close.png';
+import { useEffect, useRef } from 'react';
 
 const Cart = ({
   cartItems,
@@ -9,7 +11,24 @@ const Cart = ({
   removeFromCart,
   clearCart,
   isCartVisible,
+  closeCart,
 }) => {
+  const cartRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (cartRef.current && !cartRef.current.contains(event.target)) {
+        closeCart && closeCart();
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside, true);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside, true);
+    };
+  }, [closeCart]);
+
   const cartHasItems = cartItems.length > 0;
 
   function obtainTotal() {
@@ -30,7 +49,14 @@ const Cart = ({
     <>
       {isCartVisible && (
         <div className="cartSection">
-          <aside className="cartDisplay">
+          <aside className="cartDisplay" ref={cartRef}>
+            <img
+              src={close}
+              alt="Close Cart Button"
+              className="closeBtn"
+              onClick={closeCart}
+            />
+
             <ul className="cartList">
               {cartItems.map((cartProduct) => (
                 <li key={cartProduct.id} className="cartProduct">

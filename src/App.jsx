@@ -33,7 +33,8 @@ function App() {
     removeFromCart,
     clearCart,
     isCartVisible,
-    updateCartVisibility,
+    showCart,
+    closeCart,
   } = useCart();
 
   function handleSearchBarSubmit(event) {
@@ -50,7 +51,7 @@ function App() {
 
   return (
     <>
-      <Nav handleCartBtnClick={updateCartVisibility} />
+      <Nav isCartVisible={isCartVisible} showCart={showCart} />
 
       <Header
         filters={filters}
@@ -73,6 +74,7 @@ function App() {
         removeFromCart={removeFromCart}
         clearCart={clearCart}
         isCartVisible={isCartVisible}
+        closeCart={closeCart}
       />
 
       <Products

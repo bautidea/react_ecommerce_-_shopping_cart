@@ -66,8 +66,12 @@ const useCart = () => {
     setCartItems([]);
   }
 
-  function updateCartVisibility() {
-    setIsCartVisible(!isCartVisible);
+  function showCart() {
+    setIsCartVisible((prevValue) => !prevValue);
+  }
+
+  function closeCart() {
+    setIsCartVisible(false);
   }
 
   return {
@@ -78,7 +82,8 @@ const useCart = () => {
     removeFromCart,
     clearCart,
     isCartVisible,
-    updateCartVisibility,
+    showCart,
+    closeCart,
   };
 };
 

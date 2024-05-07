@@ -20,3 +20,12 @@
   height: 30px;
   width: auto;
 }
+
+.disabled {
+  opacity: 0.5;
+  cursor: auto;
+}
+
+.disabled:hover {
+  border: 1px solid wheat;
+}

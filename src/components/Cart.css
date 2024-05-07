@@ -20,6 +20,18 @@
   width: 30%;
   height: 100%;
   margin-right: 15rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.closeBtn {
+  height: auto;
+  width: 15px;
+  align-self: flex-end;
+  padding: 15px;
+}
+.closeBtn:hover {
+  cursor: pointer;
 }
 
 .cartProduct {
