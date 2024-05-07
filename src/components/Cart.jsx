@@ -15,6 +15,7 @@ const Cart = () => {
     isCartVisible,
     closeCart,
   } = useContext(CartContext);
+
   const cartRef = useRef(null);
 
   useEffect(() => {
