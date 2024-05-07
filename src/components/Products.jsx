@@ -1,20 +1,21 @@
 import './Products.css';
 import { AddToCartIcon } from './Icons.jsx';
 import Loading from './Loading.jsx';
+import { CartContext } from '../context/CartContext.jsx';
+import { useContext } from 'react';
+import useProducts from '../hooks/useProducts.js';
 
-const Products = ({
-  products,
-  isLoading,
-  foundSearchedProducts,
-  handleAddToCart,
-}) => {
-  if (!foundSearchedProducts && !isLoading) {
+const Products = ({ products }) => {
+  const { addToCart } = useContext(CartContext);
+  const { isProductsLoading, foundSearchedProducts } = useProducts();
+
+  if (!foundSearchedProducts && !isProductsLoading) {
     return <h2> No Products were found </h2>;
   }
 
   return (
     <main className="products">
-      {isLoading ? (
+      {isProductsLoading ? (
         <Loading />
       ) : (
         <ul>
@@ -28,7 +29,7 @@ const Products = ({
 
               <div>
                 <p>$ {product.price}</p>
-                <button onClick={() => handleAddToCart(product)}>
+                <button onClick={() => addToCart(product)}>
                   {AddToCartIcon()}
                 </button>
               </div>

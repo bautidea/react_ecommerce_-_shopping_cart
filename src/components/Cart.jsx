@@ -1,18 +1,20 @@
 import './Cart.css';
 import bin from '../assets/bin.png';
 import close from '../assets/close.png';
-import { useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
+import { CartContext } from '../context/CartContext';
 
-const Cart = ({
-  cartItems,
-  addToCart,
-  decreaseQuantity,
-  updateInputProductQuantity,
-  removeFromCart,
-  clearCart,
-  isCartVisible,
-  closeCart,
-}) => {
+const Cart = () => {
+  const {
+    cartItems,
+    addToCart,
+    decreaseQuantity,
+    updateInputProductQuantity,
+    removeFromCart,
+    clearCart,
+    isCartVisible,
+    closeCart,
+  } = useContext(CartContext);
   const cartRef = useRef(null);
 
   useEffect(() => {

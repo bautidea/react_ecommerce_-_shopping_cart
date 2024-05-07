@@ -1,76 +1,25 @@
 import Products from './components/Products';
 import Header from './components/Header';
 import Nav from './components/Nav';
-import Cart from './components/Cart';
 import useProducts from './hooks/useProducts';
-import useCart from './hooks/useCart';
 import useFilter from './hooks/useFilter';
+import { CartContextProvider } from './context/CartContext';
 
 function App() {
-  const {
-    products,
-    searchProduct,
-    isProductsLoading,
-    updateSearch,
-    foundSearchedProducts,
-    handleSearchBarSubmit,
-  } = useProducts();
+  const { products } = useProducts();
+  const { filterProducts } = useFilter();
 
-  const {
-    filteredProducts,
-    filters,
-    isFilterActive,
-    updateFilters,
-    clearFilter,
-    updateFiltersVisibility,
-  } = useFilter({ products });
-
-  const {
-    cartItems,
-    addToCart,
-    decreaseQuantity,
-    updateInputProductQuantity,
-    removeFromCart,
-    clearCart,
-    isCartVisible,
-    showCart,
-    closeCart,
-  } = useCart();
+  const filteredProducts = filterProducts(products);
 
   return (
     <>
-      <Nav isCartVisible={isCartVisible} showCart={showCart} />
+      <CartContextProvider>
+        <Nav />
 
-      <Header
-        filters={filters}
-        handleFilterChange={updateFilters}
-        possibleFilters={filteredProducts}
-        sliderValue={filters.minPrice}
-        searchInputValue={searchProduct}
-        handleInputChange={updateSearch}
-        handleFormSubmit={handleSearchBarSubmit}
-        isFilterActive={isFilterActive}
-        onFilterClick={updateFiltersVisibility}
-        clearFilter={clearFilter}
-      />
+        <Header filteredProducts={filteredProducts} />
 
-      <Cart
-        cartItems={cartItems}
-        addToCart={addToCart}
-        decreaseQuantity={decreaseQuantity}
-        updateInputProductQuantity={updateInputProductQuantity}
-        removeFromCart={removeFromCart}
-        clearCart={clearCart}
-        isCartVisible={isCartVisible}
-        closeCart={closeCart}
-      />
-
-      <Products
-        products={filteredProducts}
-        isLoading={isProductsLoading}
-        foundSearchedProducts={foundSearchedProducts}
-        handleAddToCart={addToCart}
-      />
+        <Products products={filteredProducts} />
+      </CartContextProvider>
     </>
   );
 }

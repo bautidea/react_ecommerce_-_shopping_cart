@@ -1,12 +1,9 @@
-import { useState, useMemo } from 'react';
+import { useContext, useCallback } from 'react';
+import { ProductsContext } from '../context/ProductsContext';
 
-const useFilter = ({ products }) => {
-  const [filters, setFilters] = useState({
-    category: 'all',
-    brand: 'all',
-    minPrice: 0,
-  });
-  const [isFilterActive, setIsFilterActive] = useState(false);
+const useFilter = () => {
+  const { filters, setFilters, isFilterActive, setIsFilterActive } =
+    useContext(ProductsContext);
 
   function updateFilters(filterToMod, value) {
     setFilters({ ...filters, [filterToMod]: value });
@@ -24,17 +21,21 @@ const useFilter = ({ products }) => {
     setIsFilterActive(!isFilterActive);
   }
 
-  const filteredProducts = useMemo(() => {
-    return products.filter(
-      (product) =>
-        product.price >= filters.minPrice &&
-        (filters.category === 'all' || product.category === filters.category) &&
-        (filters.brand === 'all' || product.brand === filters.brand)
-    );
-  }, [products, filters]);
+  const filterProducts = useCallback(
+    (products) => {
+      return products.filter(
+        (product) =>
+          product.price >= filters.minPrice &&
+          (filters.category === 'all' ||
+            product.category === filters.category) &&
+          (filters.brand === 'all' || product.brand === filters.brand)
+      );
+    },
+    [filters]
+  );
 
   return {
-    filteredProducts,
+    filterProducts,
     filters,
     isFilterActive,
     updateFilters,

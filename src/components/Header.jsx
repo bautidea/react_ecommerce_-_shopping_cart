@@ -1,39 +1,20 @@
 import Filters from './Filters';
 import SearchBar from './SearchBar';
 import FilterDiv from './FilterDiv';
+import useFilter from '../hooks/useFilter';
 
-const Header = ({
-  filters,
-  handleFilterChange,
-  possibleFilters,
-  sliderValue,
-  searchInputValue,
-  handleInputChange,
-  handleFormSubmit,
-  isFilterActive,
-  onFilterClick,
-  clearFilter,
-}) => {
+const Header = ({ filteredProducts }) => {
+  const { isFilterActive } = useFilter();
+
   return (
     <header>
-      <SearchBar
-        inputValue={searchInputValue}
-        handleChange={handleInputChange}
-        handleFormSubmit={handleFormSubmit}
-      />
+      <SearchBar />
 
-      <FilterDiv
-        isFilterActive={isFilterActive}
-        onFilterClick={onFilterClick}
-      />
+      <FilterDiv isFilterActive={isFilterActive} />
 
       <Filters
-        filters={filters}
-        handleFilterChange={handleFilterChange}
-        possibleFilters={possibleFilters}
-        sliderValue={sliderValue}
+        filteredProducts={filteredProducts}
         isFilterActive={isFilterActive}
-        onClearFilterClick={clearFilter}
       />
     </header>
   );

@@ -1,13 +1,19 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect } from 'react';
 import fetchAllProducts from '../services/fetchAllProducts';
 import fetchSearchedProducts from '../services/fetchSearchedProducts';
+import { ProductsContext } from '../context/ProductsContext';
 
 function useProducts() {
-  const [products, setProducts] = useState([]);
-  const [searchProduct, setSearchProduct] = useState('');
-
-  const [isProductsLoading, setIsProductsLoading] = useState(false);
-  const [foundSearchedProducts, setFoundSearchedProducts] = useState(true);
+  const {
+    products,
+    setProducts,
+    searchProduct,
+    setSearchProduct,
+    isProductsLoading,
+    setIsProductsLoading,
+    foundSearchedProducts,
+    setFoundSearchedProducts,
+  } = useContext(ProductsContext);
 
   function updateSearch(newSearchProduct) {
     setSearchProduct(newSearchProduct);
@@ -24,20 +30,23 @@ function useProducts() {
     } finally {
       setIsProductsLoading(false);
     }
-  }, []);
+  }, [setIsProductsLoading, setProducts]);
 
-  const getSearchedProducts = useCallback(async (productToSearch) => {
-    try {
-      setIsProductsLoading(true);
+  const getSearchedProducts = useCallback(
+    async (productToSearch) => {
+      try {
+        setIsProductsLoading(true);
 
-      const newProducts = await fetchSearchedProducts(productToSearch);
-      setProducts(newProducts);
-    } catch (e) {
-      console.log(e);
-    } finally {
-      setIsProductsLoading(false);
-    }
-  }, []);
+        const newProducts = await fetchSearchedProducts(productToSearch);
+        setProducts(newProducts);
+      } catch (e) {
+        console.log(e);
+      } finally {
+        setIsProductsLoading(false);
+      }
+    },
+    [setIsProductsLoading, setProducts]
+  );
 
   function handleSearchBarSubmit(event) {
     event.preventDefault();
@@ -63,7 +72,7 @@ function useProducts() {
     } else {
       setFoundSearchedProducts(true);
     }
-  }, [products]);
+  }, [products, setFoundSearchedProducts]);
 
   return {
     products,

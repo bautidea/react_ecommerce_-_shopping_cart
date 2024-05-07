@@ -3,33 +3,29 @@ import { useId } from 'react';
 import { brands, categories } from '../data/categories.json';
 import SelectFilter from './SelectFilter';
 import RangeFilter from './RangeFilter';
+import useFilter from '../hooks/useFilter';
 
-const Filters = ({
-  filters,
-  handleFilterChange,
-  possibleFilters,
-  sliderValue,
-  isFilterActive,
-  onClearFilterClick,
-}) => {
+const Filters = ({ filteredProducts, isFilterActive }) => {
+  const { filters, updateFilters, clearFilter } = useFilter();
+
   const priceSliderId = useId();
   const brandSelectId = useId();
   const categorySelectId = useId();
 
   function handlePriceChange(value) {
-    handleFilterChange('minPrice', value);
+    updateFilters('minPrice', value);
   }
 
   function handleBrandChange(event) {
-    handleFilterChange('brand', event.target.value);
+    updateFilters('brand', event.target.value);
   }
 
   function handleCategoryChange(event) {
-    handleFilterChange('category', event.target.value);
+    updateFilters('category', event.target.value);
   }
 
   // Obtaining all brands and its correspondent category.
-  const usedFilters = possibleFilters.map(({ brand, category }) => ({
+  const usedFilters = filteredProducts.map(({ brand, category }) => ({
     brand,
     category,
   }));
@@ -41,7 +37,7 @@ const Filters = ({
       <div className="rangeComponents">
         <RangeFilter
           minValue="0"
-          value={sliderValue}
+          value={filters.minPrice}
           maxValue="2000"
           handlePriceChange={handlePriceChange}
           filterId={priceSliderId}
@@ -68,7 +64,7 @@ const Filters = ({
         />
       </div>
 
-      <button type="button" onClick={onClearFilterClick}>
+      <button type="button" onClick={clearFilter}>
         Clear Filter
       </button>
     </section>
