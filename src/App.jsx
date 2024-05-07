@@ -34,6 +34,7 @@ function App() {
     clearCart,
     isCartVisible,
     updateCartVisibility,
+    onClickOutsideCart,
   } = useCart();
 
   function handleSearchBarSubmit(event) {
@@ -73,6 +74,7 @@ function App() {
         removeFromCart={removeFromCart}
         clearCart={clearCart}
         isCartVisible={isCartVisible}
+        onClickOutsideCart={onClickOutsideCart}
       />
 
       <Products

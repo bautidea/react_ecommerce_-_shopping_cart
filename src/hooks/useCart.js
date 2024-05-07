@@ -70,6 +70,10 @@ const useCart = () => {
     setIsCartVisible(!isCartVisible);
   }
 
+  function onClickOutsideCart() {
+    setIsCartVisible(false);
+  }
+
   return {
     cartItems,
     addToCart,
@@ -79,6 +83,7 @@ const useCart = () => {
     clearCart,
     isCartVisible,
     updateCartVisibility,
+    onClickOutsideCart,
   };
 };
 
