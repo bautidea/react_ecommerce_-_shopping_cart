@@ -51,22 +51,36 @@
 }
 
 .cartProductDesc img {
-  height: auto;
-  width: 10rem;
+  width: 50%;
+  min-height: 100px;
+  max-height: 10rem;
+  max-width: 10rem;
   margin-right: 10px;
 }
 
 .productInfo {
+  width: 50%;
   display: flex;
   flex-direction: column;
-  align-items: start;
   justify-content: flex-start;
+  text-align: left;
 }
 
 .productTitle,
 .productBrand,
 .cartUtilityButton {
   margin: 0;
+}
+
+.productTitle {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.productTitle:hover {
+  white-space: unset;
 }
 
 .productBrand {
