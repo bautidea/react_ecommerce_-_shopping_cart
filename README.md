@@ -19,3 +19,7 @@
 - Modify products amount in cart.
 - Sync changes between cart and product list.
 - Save in LocalStorage the cart, so changes persist in page re-loading.
+
+### General Considerations.
+
+- Implemented Context for global state handling and prop passing.

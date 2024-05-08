@@ -45,14 +45,33 @@
   background: #fff;
 }
 
+.cartButtonsContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .products button {
-  width: 70%;
   border: wheat 1px solid;
+}
+
+.addToCartBtnNotInCart {
+  width: 70%;
+  margin: 0 auto;
+  background: rgba(44, 130, 236, 0.25);
+}
+
+.addToCartBtnInCart {
+  background: rgba(115, 202, 119, 0.5);
+}
+
+.removeFromCartBtn {
+  background: rgba(255, 0, 0, 0.5);
 }
 
 .prodDesc {
   position: absolute;
-
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -42,11 +42,9 @@ export function CartContextProvider({ children }) {
   }
 
   function removeFromCart(productId) {
-    const newCart = cartItems.filter(
-      (cartProduct) => cartProduct.id !== productId
+    setCartItems((prevCart) =>
+      prevCart.filter((cartProduct) => cartProduct.id !== productId)
     );
-
-    setCartItems(newCart);
   }
 
   function decreaseQuantity(product) {

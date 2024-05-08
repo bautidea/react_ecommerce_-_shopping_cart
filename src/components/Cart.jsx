@@ -48,6 +48,7 @@ const Cart = () => {
       updateInputProductQuantity(productId, newValue);
     }
   }
+
   return (
     <>
       {isCartVisible && (
