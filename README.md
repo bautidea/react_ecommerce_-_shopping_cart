@@ -12,6 +12,16 @@
 - Added loading skeletons when products are loading.
 - When no products are founded display a msg.
 
+<div align='center' display='flex' flex-direction='row' width='100%' >
+<img src='./src/assets/e-commerce_img_git.png' width='50%' >
+<img src='./src/assets/e-commerce_img_git_4.png' width='50%' >
+</div>
+
+<div align='center' display='flex' flex-direction='row' width='100%' >
+<img src='./src/assets/e-commerce_img_git_2.png' width='50%' >
+<img src='./src/assets/e-commerce_img_git_3.png' width='49.5%' >
+</div>
+
 ### 2. Shopping Cart:
 
 - Add products to cart.
@@ -19,6 +29,11 @@
 - Modify products amount in cart.
 - Sync changes between cart and product list.
 - Save in LocalStorage the cart, so changes persist in page re-loading.
+- Whenever clicking outside cart section, it close the cart.
+
+<div align='center' display='flex' flex-direction='row' width='100%' >
+<img src='./src/assets/cart_img_git.png' width='75%' >
+</div>
 
 ### General Considerations.
 

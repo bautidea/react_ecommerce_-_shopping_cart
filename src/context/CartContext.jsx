@@ -91,7 +91,7 @@ function cartReducer(state, action) {
 
     case 'CLEAR_CART': {
       removeFromLocalStorage();
-      return initialCartState;
+      return [];
     }
   }
 }
