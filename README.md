@@ -14,12 +14,12 @@
 
 <div align='center' display='flex' flex-direction='row' width='100%' >
 <img src='./src/assets/e-commerce_img_git.png' width='50%' >
-<img src='./src/assets/e-commerce_img_git_4.png' width='50%' >
 </div>
 
 <div align='center' display='flex' flex-direction='row' width='100%' >
 <img src='./src/assets/e-commerce_img_git_2.png' width='50%' >
 <img src='./src/assets/e-commerce_img_git_3.png' width='49.5%' >
+<img src='./src/assets/e-commerce_img_git_4.png' width='50%' >
 </div>
 
 ### 2. Shopping Cart:
