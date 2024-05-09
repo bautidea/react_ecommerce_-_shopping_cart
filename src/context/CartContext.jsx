@@ -97,7 +97,7 @@ function cartReducer(state, action) {
 }
 
 export function CartContextProvider({ children }) {
-  const [cartItems, dispatch] = useReducer(cartReducer, initialCartState);
+  const [cartItems, dispatch] = useReducer(cartReducer, initialCartState());
   const [isCartVisible, setIsCartVisible] = useState(false);
 
   function addToCart(product) {
